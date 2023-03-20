@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Error from "./Error"
 
-const Formulario = () => {
+const Formulario = ({notas, setNotas}) => {
     
     const [titulo, setTitulo] = useState("")
     const [descripcion, setDescripcion] = useState("")
@@ -19,20 +19,17 @@ const Formulario = () => {
         
         setError(false)
         
-        
-        
-        
-        
-        const nota = {
+        const objetoNota = {
             titulo,
             descripcion,
             fecha
         }
         
+        setNotas([...notas, objetoNota])
         
-        
-        
-        
+        setTitulo('')
+        setDescripcion('')
+        setFecha('')
         
         
         
@@ -49,7 +46,7 @@ const Formulario = () => {
                 className="bg-blue-200 shadow-lg "
                 onSubmit={handleSubmit}
                 >
-                {error && <Error />}
+                {error && <Error><p>Todos los campos son obligatorios</p></Error>}
                 <div className="mb-3 p-3">
                     <label htmlFor="titulo" className="block text-2xl p-1 mb-1">Titulo</label>
                     <input 
