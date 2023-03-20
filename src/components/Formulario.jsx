@@ -89,7 +89,8 @@ const Formulario = ({notas, setNotas}) => {
                     <input 
                         type="submit" 
                         value={'Agregar nota'}
-                        className="text-3xl p-2 mb-2 rounded-md bg-blue-300 hover:bg-blue-400 transition-colors cursor-pointer"
+                        className="mb-2 px-8 py-4 text-3xl font-semibold rounded-md text-white bg-blue-500 hover:bg-blue-600 transition-colors cursor-pointer"
+                        
                     />
                 </div>
                     
