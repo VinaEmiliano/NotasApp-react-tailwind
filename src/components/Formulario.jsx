@@ -1,12 +1,42 @@
 import { useState } from "react"
+import Error from "./Error"
 
 const Formulario = () => {
-
+    
     const [titulo, setTitulo] = useState("")
     const [descripcion, setDescripcion] = useState("")
     const [fecha, setFecha] = useState("")
-
-
+    
+    const [error, setError] = useState(false)
+    
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        
+        if ([titulo, descripcion, fecha].includes('')){
+            setError(true)
+            return
+        } 
+        
+        setError(false)
+        
+        
+        
+        
+        
+        const nota = {
+            titulo,
+            descripcion,
+            fecha
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+}
 
 
 
@@ -17,7 +47,9 @@ const Formulario = () => {
             
             <form 
                 className="bg-blue-200 shadow-lg "
+                onSubmit={handleSubmit}
                 >
+                {error && <Error />}
                 <div className="mb-3 p-3">
                     <label htmlFor="titulo" className="block text-2xl p-1 mb-1">Titulo</label>
                     <input 
