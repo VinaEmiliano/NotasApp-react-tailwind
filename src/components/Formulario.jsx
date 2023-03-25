@@ -1,7 +1,7 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Error from "./Error"
 
-const Formulario = ({notas, setNotas}) => {
+const Formulario = ({notas, setNotas, nota, setNota}) => {
     
     const [titulo, setTitulo] = useState("")
     const [descripcion, setDescripcion] = useState("")
@@ -15,6 +15,13 @@ const Formulario = ({notas, setNotas}) => {
         return random + fecha
     }
     
+    useEffect( () => {
+        if(Object.keys(nota).length > 0) {
+            setTitulo(nota.titulo),
+            setDescripcion(nota.descripcion),
+            setFecha(nota.fecha)
+        }
+    }, [nota])
     
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -30,10 +37,20 @@ const Formulario = ({notas, setNotas}) => {
             titulo,
             descripcion,
             fecha,
-            id: generarId()
         }
         
-        setNotas([...notas, objetoNota])
+        if(nota.id){
+            objetoNota.id = nota.id
+            
+            const notaActualizada = notas.map( notasState => notasState.id === nota.id ? objetoNota : notasState)
+            setNotas(notaActualizada)
+            setNota({})
+
+        }else{
+            objetoNota.id = generarId()
+            setNotas([...notas, objetoNota])
+        }
+
         
         setTitulo('')
         setDescripcion('')
@@ -88,7 +105,7 @@ const Formulario = ({notas, setNotas}) => {
                 <div className="flex justify-center">
                     <input 
                         type="submit" 
-                        value={'Agregar nota'}
+                        value={nota.id ? "Editar nota" : "Agregar nota"}
                         className="mb-2 px-8 py-4 text-3xl font-semibold rounded-md text-white bg-blue-500 hover:bg-blue-600 transition-colors cursor-pointer"
                         
                     />

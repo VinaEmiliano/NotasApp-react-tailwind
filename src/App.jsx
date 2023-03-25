@@ -6,6 +6,7 @@ import ListaDeNotas from "./components/ListaDeNotas"
 function App() {
   
   const [notas, setNotas] = useState([])
+  const [nota, setNota] = useState({})
   
   
   return (
@@ -16,9 +17,12 @@ function App() {
         <Formulario 
           notas={notas}
           setNotas={setNotas}
+          nota={nota}
+          setNota={setNota}
         />
         <ListaDeNotas
           notas={notas}
+          setNota={setNota}
         />
       </div>
       

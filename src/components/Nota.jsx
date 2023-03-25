@@ -1,7 +1,8 @@
 
-const Nota = ({nota}) => {
+const Nota = ({nota,setNota}) => {
     
     const {titulo, descripcion, fecha} = nota
+    
     
   return (
     <div  className="bg-blue-200 shadow-lg mb-4">
@@ -17,7 +18,10 @@ const Nota = ({nota}) => {
             </p>
         </div>
         <div className="flex justify-around">
-            <button className="mb-2 px-8 py-2 text-2xl font-semibold rounded-md text-white bg-blue-500 hover:bg-blue-600 transition-colors cursor-pointer">
+            <button 
+                className="mb-2 px-8 py-2 text-2xl font-semibold rounded-md text-white bg-blue-500 hover:bg-blue-600 transition-colors cursor-pointer"
+                onClick={() => setNota(nota)}
+            >
                 Editar
             </button>
             <button className="mb-2 px-8 py-2 text-2xl font-semibold rounded-md text-white bg-red-500 hover:bg-red-600 transition-colors cursor-pointer">
