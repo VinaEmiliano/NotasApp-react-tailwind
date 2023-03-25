@@ -1,6 +1,6 @@
 import Nota from "./Nota"
 
-const ListaDeNotas = ({notas,setNota}) => {
+const ListaDeNotas = ({notas,setNota,eliminarNota}) => {
 
 
   return (
@@ -15,6 +15,7 @@ const ListaDeNotas = ({notas,setNota}) => {
                 key={nota.id}
                 nota={nota}
                 setNota={setNota}
+                eliminarNota={eliminarNota}
             />
         ) )}
     </div>

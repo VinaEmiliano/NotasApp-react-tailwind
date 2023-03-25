@@ -1,8 +1,15 @@
 
-const Nota = ({nota,setNota}) => {
+const Nota = ({nota, setNota, eliminarNota}) => {
     
-    const {titulo, descripcion, fecha} = nota
+    const {titulo, descripcion, fecha, id} = nota
     
+    const handleEliminar = () => {
+        const confirmacion = confirm('Desea eliminar la nota ?')
+        
+        if(confirmacion){
+            eliminarNota(id)
+        }
+    }
     
   return (
     <div  className="bg-blue-200 shadow-lg mb-4">
@@ -24,7 +31,10 @@ const Nota = ({nota,setNota}) => {
             >
                 Editar
             </button>
-            <button className="mb-2 px-8 py-2 text-2xl font-semibold rounded-md text-white bg-red-500 hover:bg-red-600 transition-colors cursor-pointer">
+            <button 
+                className="mb-2 px-8 py-2 text-2xl font-semibold rounded-md text-white bg-red-500 hover:bg-red-600 transition-colors cursor-pointer"
+                onClick={handleEliminar}
+                >
                 Eliminar
             </button>
         </div>
